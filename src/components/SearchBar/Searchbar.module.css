@@ -1,9 +1,9 @@
 .searchBarContainer {
-    background-image: url(wolfgang-hasselmann-wMuvvN9MVZY-unsplash.webp); /* Setze den Pfad zu deinem Hintergrundbild */
+    background-image: url(7546.jpg); /* Setze den Pfad zu deinem Hintergrundbild */
     background-size: cover; /* Deckt 100% der Containerhöhe ab */
     background-position: center;
     background-repeat: no-repeat; /* Damit das Bild nicht wiederholt wird */
-    /*height: 100vh;  Setzt die Höhe auf die gesamte Viewport-Höhe */
+    height: 62vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -36,9 +36,11 @@
 
 
 .button {
-    background-color: black;
-    color: #4AC1F8;
+    background-color: goldenrod;
+    color: white;
+    font-weight: bold;
     padding: 10px 20px;
+    border: 2px black solid;
     border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
@@ -57,9 +59,11 @@
 /* Für die li */
 .sortByItem {
     margin-right: 1em; /* Optional für den Abstand zwischen den Elementen */
-    color: white;
-    font-size: 1em;
-    text-decoration: underline white solid;
+    color: black;
+    background-color: yellowgreen;
+    border-radius: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
 /* Searchbar.module.css */
@@ -72,17 +76,14 @@
 .sortByItem:hover {
     /* Hover styles here, e.g., */
     font-weight: bold;  /* Schriftgröße wird um 20% vergrößert */
-}
-
-.sortByItem:active {
-    /* Active styles here, e.g., */
-    background-color: darkred;
+    background-color: green;
 }
 
 /* Searchbar.module.css */
 .activeSortByItem {
-    background-color: #4AC1F8; /* Die gewünschte Hintergrundfarbe */
+    background-color: goldenrod; /* Die gewünschte Hintergrundfarbe */
     color: white; /* Textfarbe für den Kontrast */
+    border-radius: 20px;
 }
 
 

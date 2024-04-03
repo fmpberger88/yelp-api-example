@@ -16,6 +16,7 @@
     z-index: 1000;  /* ensure it appears on top of other content */
     background-color: white;
     list-style-type: none;
+    color: black;
 }
 
 .dropdownItem {

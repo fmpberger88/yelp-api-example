@@ -3,7 +3,10 @@ import Pages from "./views/Page.jsx";
 
 function App() {
   return (
-      <Pages />
+      <div className="container">
+        <Pages />
+      </div>
+
   )
 }
 

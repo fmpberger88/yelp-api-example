@@ -14,13 +14,13 @@ function Page() {
     const [businesses, setBusinesses] = useState([])
 
     return (
-        <Container fluid className="d-flex justify-content-center align-items-center flex-column">
-            <Row className="mb-4">
+        <Container className={styles.container}>
+            <Row className={styles.row}>
                 <Col xs={10} className="text-center">
                     <h1 className={`display-2 ${styles.Title}`}>GLEIPNIR</h1>
                 </Col>
             </Row>
-            <Row className="mb-4">
+            <Row className={styles.row}>
                 <Col xs={12} className="text-center">
                     <p>This app is using the Yelp API to find restaurants, cafes, and more.<br/>Start your search now!</p>
                 </Col>
