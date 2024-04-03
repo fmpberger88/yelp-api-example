@@ -1,0 +1,109 @@
+.searchBarContainer {
+    background-image: url(wolfgang-hasselmann-wMuvvN9MVZY-unsplash.webp); /* Setze den Pfad zu deinem Hintergrundbild */
+    background-size: cover; /* Deckt 100% der Containerhöhe ab */
+    background-position: center;
+    background-repeat: no-repeat; /* Damit das Bild nicht wiederholt wird */
+    /*height: 100vh;  Setzt die Höhe auf die gesamte Viewport-Höhe */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 2em;
+}
+
+.inputGroup {
+    display: flex;
+    justify-content: center;
+    gap: 2.5em; /* Abstand zwischen den Inputs */
+    margin-top: 50px;
+}
+
+.inputGroup input {
+    width: 200px; /* Breite der Inputs */
+    padding: 12px 20px; /* Innenabstand für Text */
+    margin: 8px 0; /* Äußerer Abstand */
+    box-sizing: border-box; /* Um sicherzustellen, dass Breite und Höhe den Rand und den Innenabstand einschließen */
+    border: 2px solid #ccc; /* Randfarbe */
+    border-radius: 4px; /* Abgerundete Ecken */
+    font-size: 16px; /* Schriftgröße */
+    transition: 0.3s; /* Übergang für Hover-Effekt */
+}
+
+.inputGroup input:focus {
+    border-color: #555; /* Randfarbe beim Fokus */
+}
+
+
+.button {
+    background-color: black;
+    color: #4AC1F8;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5em;
+    width: 180px;
+}
+
+/* Für die ul */
+.sortByList {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+}
+
+/* Für die li */
+.sortByItem {
+    margin-right: 1em; /* Optional für den Abstand zwischen den Elementen */
+    color: white;
+    font-size: 1em;
+    text-decoration: underline white solid;
+}
+
+/* Searchbar.module.css */
+.sortByItem {
+    /* Your base styles here, e.g., */
+    padding: 8px;
+    cursor: pointer;
+}
+
+.sortByItem:hover {
+    /* Hover styles here, e.g., */
+    font-weight: bold;  /* Schriftgröße wird um 20% vergrößert */
+}
+
+.sortByItem:active {
+    /* Active styles here, e.g., */
+    background-color: darkred;
+}
+
+/* Searchbar.module.css */
+.activeSortByItem {
+    background-color: #4AC1F8; /* Die gewünschte Hintergrundfarbe */
+    color: white; /* Textfarbe für den Kontrast */
+}
+
+
+/* Für größere Bildschirme (z.B. Desktops) */
+@media (min-width: 768px) {
+    .inputGroup {
+        flex-direction: row; /* Eingabefelder nebeneinander */
+    }
+    .inputGroup input {
+        width: 200px; /* Feste Breite */
+    }
+}
+
+/* Für kleinere Bildschirme (z.B. Smartphones) */
+@media (max-width: 767px) {
+    .inputGroup {
+        flex-direction: column; /* Eingabefelder untereinander */
+        align-items: center; /* Zentriert die Eingabefelder */
+    }
+    .inputGroup input {
+        width: 100%; /* Nutzt die gesamte Breite des Containers */
+        max-width: 300px; /* Optional, um sicherzustellen, dass die Eingabefelder nicht zu breit werden */
+    }
+}

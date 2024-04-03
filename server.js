@@ -1,11 +1,20 @@
-const express = require('express');
-const axios = require('axios');
-const cors = require('cors');
-const rateLimit = require('express-rate-limit');
-const path = require('path');
-const morgan = require('morgan');
-const helmet = require('helmet');
-require('dotenv').config();
+import express from 'express';
+import axios from 'axios';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+import path from 'path';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import dotenv from 'dotenv';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
+dotenv.config();
 
 const YELP_API_KEY = process.env.YELP_API_KEY;
 const YELP_BASE_URL = 'https://api.yelp.com/v3/businesses/search';
@@ -39,37 +48,54 @@ const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
     max: 10 // limit each IP to 10 requests per windowMs
 })
+// Apply rate limiting to the search API
+app.use('/search', limiter);
 
 // *** Routes *** //
 
 // search yelp api route
-app.get('/api/search', limiter, async (req, res) => {
+app.get('/search', async (req, res) => {
     try {
-        const { term, location, sort_by } = req.query; // extrat params from request
-        if (!term || !location || !sort_by) {
-            res.status(400).send("parameters missing");
-
-            // Define headers
-            const headers = {
-                Authorization: `Bearer ${YELP_API_KEY}`
-            }
-
-            // fetch data
-            const response = await axios.get(YELP_BASE_URL, { headers, params: { term, location, sort_by } });
-            res.status(200).json(response.data);
+        const { term, location, sort_by } = req.query;
+        if (!term || typeof(term) !== "string" ||
+            !location || typeof(location) !== "string" ||
+            !sort_by || typeof(sort_by) !== "string"
+        ) {
+            return res.status(400).json({ error: 'Invalid parameters' });
         }
+        const headers = {
+            Authorization: `Bearer ${YELP_API_KEY}`
+        };
+        const yelpRes = await axios.get(YELP_BASE_URL, {
+            headers,
+            params: { term, location, sort_by }
+        });
+        res.json(yelpRes.data);
     } catch (error) {
-        console.log(error);
-        res.status(500).send('Internal Server Error')
+        console.error(error);
+        if (error.response) {
+            // Der Request wurde ausgeführt und der Server antwortete mit einem Statuscode
+            // der außerhalb des Bereichs von 2xx liegt
+            console.error(error.response.data);
+            console.error(error.response.status);
+            console.error(error.response.headers);
+        } else if (error.request) {
+            // Der Request wurde gesendet, aber es kam keine Antwort
+            console.error(error.request);
+        } else {
+            // Etwas anderes beim Einrichten des Requests verursachte den Fehler
+            console.error('Error', error.message);
+        }
+        res.status(500).json({ error: 'Ein interner Serverfehler ist aufgetreten.' });
     }
 });
 
 // api yelp autocomplete route
-app.get('/api/autocomplete', limiter, async (req, res) => {
+app.get('/autocomplete', async (req, res) => {
     try {
         const { text } = req.query;
         if (!text) {
-            res.status(400).send('missing parameter');
+           return res.status(400).send('missing parameter');
         }
 
         const headers = {
@@ -101,13 +127,12 @@ app.get('*', (req, res) => {
 
 // error handling
 app.use((err, req, res) => {
-    console.error(err.stack);
+    console.error(err);
     res.status(500).send("Internal Server Error");
 });
 
 // *** Server Setup *** //
-const PORT = process.env.PORT || 3002;
-
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
