@@ -47,7 +47,7 @@ function Business(businesses) {
                     </div>
                 </Card.Text>
                 <a href={businesses.business.url} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline-dark">More Information</Button>
+                    <Button className={styles.btn}>More Information</Button>
                 </a>
             </Card.Body>
         </Card>

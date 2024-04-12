@@ -17,12 +17,7 @@ function Page() {
         <Container className={styles.container}>
             <Row className={styles.row}>
                 <Col xs={10} className="text-center">
-                    <h1 className={`display-2 ${styles.Title}`}>GLEIPNIR</h1>
-                </Col>
-            </Row>
-            <Row className={styles.row}>
-                <Col xs={12} className="text-center">
-                    <p>This app is using the Yelp API to find restaurants, cafes, and more.<br/>Start your search now!</p>
+                    <h1 className={`display-2 ${styles.Title}`}>Yelp API</h1>
                 </Col>
             </Row>
             <Row className={styles.searchBarRow}>
@@ -34,8 +29,7 @@ function Page() {
             <Row className="mt-4">
                 <Col xs={12} className="text-center">
                     <footer>
-                        <p>Copyright &copy; fmpberger 2023</p>
-                        <p><a href="https://www.fmpberger.com">www.fmpberger.com</a></p>
+                        <p><a className={styles.footerLink} href="https://www.fmpberger.com">www.fmpberger.com</a></p>
                     </footer>
                 </Col>
             </Row>

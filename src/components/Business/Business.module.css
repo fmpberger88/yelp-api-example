@@ -3,6 +3,7 @@
     height: 500px;
     border-radius: 10px; /* Abgerundete Ecken */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Leichter Schatten */
+    background: yellowgreen;
 }
 
 
@@ -40,4 +41,13 @@
 
 .CardText p {
     margin: 0.1em 0;
+}
+
+.btn {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

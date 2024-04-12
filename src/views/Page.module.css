@@ -10,8 +10,19 @@
 
 .Title {
     font-family: Roboto, sans-serif;
+    font-size: 4rem;
+    margin-top: 80px;
+    color: goldenrod;
 }
 
 .row {
     margin-bottom: 30px;
+}
+
+.footerLink {
+    font-weight: bold;
+    text-decoration: none;
+    color: yellowgreen;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
 }
