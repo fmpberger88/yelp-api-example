@@ -27,9 +27,14 @@ const starImages = {
     5: star5
 }
 
+const getStarImage = (rating) => {
+    let roundRating = Math.round(rating * 2) / 2; // round to nearest 0.5
+    return starImages[roundRating]
+}
+
 function Business(businesses) {
     const rating = businesses.business.rating;
-    const starImage = starImages[rating];
+    const starImage = getStarImage(rating);
     return (
         <Card className={styles.BusinessCard}>
             <Card.Img variant="top" src={businesses.business.image_url} className={styles.CardImage}/>
